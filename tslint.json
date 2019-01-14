@@ -1,0 +1,19 @@
+{
+  "defaultSeverity": "warning",
+  "extends": "tslint-ionic-rules",
+  "jsRules": {},
+  "rules": {
+    "no-duplicate-variable": true,
+    "no-floating-promises": {
+      "severity": "error"
+    },
+    "promise-function-async": true,
+    "no-unused-variable": [
+      true
+    ],
+    "no-var-requires": false
+  },
+  "rulesDirectory": [
+    "node_modules/tslint-eslint-rules/dist/rules"
+  ]
+}
