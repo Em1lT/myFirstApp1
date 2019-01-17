@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http'
 import { Pic } from '../../interfaces/pic';
+import { MediaProvider } from '../../providers/media/media';
 
 @Component({
   selector: 'page-home',
@@ -11,17 +12,14 @@ export class HomePage {
 
   picArray: Pic[];
   url = "https://media.mw.metropolia.fi/wbma/uploads/";
-  constructor(public navCtrl: NavController,public http: HttpClient) {
+  constructor(public navCtrl: NavController,public http: HttpClient, private mediaProvider: MediaProvider) {
 
   }
   ngOnInit(){
-    this.getPic()
+    this.mediaProvider.getAllMedia();
   }
-  getPic(){
-    return this.http.get<Pic[]>('https://media.mw.metropolia.fi/wbma/media')
-    .subscribe((data) =>this.picArray = data);
-  }
+  
   clicked(){
-    alert("Clicked!!")
+    alert("Clicked!!");
   }
 }
