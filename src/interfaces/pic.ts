@@ -1,6 +1,5 @@
 export interface  Pic {
-    title: string,
-    details: string,
-    thumbnail: string,
-    original: string
+    filename: string;
+    title: string;
+    description: string;
 }

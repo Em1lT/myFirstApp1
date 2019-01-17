@@ -10,7 +10,7 @@ import { Pic } from '../../interfaces/pic';
 export class HomePage {
 
   picArray: Pic[];
-
+  url = "https://media.mw.metropolia.fi/wbma/uploads/";
   constructor(public navCtrl: NavController,public http: HttpClient) {
 
   }
@@ -18,8 +18,8 @@ export class HomePage {
     this.getPic()
   }
   getPic(){
-    return this.http.get<Pic[]>('../../assets/test.json')
-    .subscribe((data) => this.picArray = data);
+    return this.http.get<Pic[]>('https://media.mw.metropolia.fi/wbma/media')
+    .subscribe((data) =>this.picArray = data);
   }
   clicked(){
     alert("Clicked!!")
