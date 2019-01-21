@@ -8,12 +8,12 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let image of picArray">
+    <ion-item *ngFor="let pic of picArray">
       <ion-thumbnail item-start>
-        <img  [src]="url+image.filename">
+        <img  [src]="'https://media.mw.metropolia.fi/wbma/uploads/' + pic.thumbnails['160']">
       </ion-thumbnail>
-      <h2>{{image.title}}</h2>
-      <p>{{image.description}}</p>
+      <h2>{{pic.title}}</h2>
+      <p>{{pic.description}}</p>
       <button ion-button clear item-end (click)="clicked()">View</button>
     </ion-item>
   </ion-list>
