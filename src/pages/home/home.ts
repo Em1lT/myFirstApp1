@@ -12,7 +12,7 @@ export class HomePage {
 
   pics: any;
   picArray: Pic[];
-  url = "https://media.mw.metropolia.fi/wbma/uploads/";
+  url: string = "https://media.mw.metropolia.fi/wbma/uploads/";
   constructor(public navCtrl: NavController,public http: HttpClient, public mediaProvider: MediaProvider) {
 
   }
@@ -23,12 +23,18 @@ export class HomePage {
     this.mediaProvider.getAllMedia().subscribe((data: Pic[])=> {
     console.log('data', data);
     this.picArray = data.map((pic: Pic) => {
-      //add thumnail property to pic
+      //add thumbnail property to pic
+      const nameArray = pic.filename.split('.');
+      console.log(nameArray);
+      pic.thumbnails = {
+        160: nameArray[0]+ '-tn160.png',
+      }
+
     return pic;
     });
   });
   }
-  
+
   
   clicked(){
     alert("Clicked!!");

@@ -10,6 +10,7 @@ export interface Pic {
     time_added: string;
     screenshot?: string;
     thumbnails?: Thumbnail;
+    
   }
 
   export interface Thumbnail{
