@@ -15,11 +15,11 @@ export class MediaProvider {
   constructor(public http: HttpClient) {
     
   }
+  
   getAllMedia(){
     return this.http.get<Pic[]>(this.configUrl + '/media');
   }
+  getSingleMedia(id){
+    return this.http.get<Pic>(this.configUrl + '/media/'+ id);
+  }
 }
-/*return this.getData()
-    .subscribe((data) =>{
-      this.picArray = data;
-*/

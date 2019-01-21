@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http'
 import { Pic } from '../../interfaces/pic';
 import { MediaProvider } from '../../providers/media/media';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'page-home',
@@ -11,17 +12,19 @@ import { MediaProvider } from '../../providers/media/media';
 export class HomePage {
 
   pics: any;
-  picArray: Pic[];
+  picArray: Pic[] = [];
+  //picArray2: Observable<Pic[]>;
   url: string = "https://media.mw.metropolia.fi/wbma/uploads/";
   constructor(public navCtrl: NavController,public http: HttpClient, public mediaProvider: MediaProvider) {
 
   }
   ngOnInit(){
-    this.getAllFile();
+    this.getAllFiles();
   }
-  getAllFile(){
+  getAllFiles(){
     this.mediaProvider.getAllMedia().subscribe((data: Pic[])=> {
     console.log('data', data);
+   /*A:
     this.picArray = data.map((pic: Pic) => {
       //add thumbnail property to pic
       const nameArray = pic.filename.split('.');
@@ -29,14 +32,19 @@ export class HomePage {
       pic.thumbnails = {
         160: nameArray[0]+ '-tn160.png',
       }
-
-    return pic;
+    return pic;*/
+    //B:
+    data.forEach((pic:Pic) => {
+      this.mediaProvider.getSingleMedia(pic.file_id)
+      .subscribe((file: Pic) => {
+        this.picArray.push(file);
+      });
     });
   });
   }
 
   
-  clicked(){
-    alert("Clicked!!");
+  clicked(pic){
+    alert("Clicked!!" + pic.file_id + pic.title);
   }
 }
