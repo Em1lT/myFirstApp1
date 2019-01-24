@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Pic } from '../../interfaces/pic';
+import { Pic, User, LoginResponse } from '../../interfaces/pic';
 /*
   Generated class for the MediaProvider provider.
 
@@ -12,6 +12,7 @@ export class MediaProvider {
   configUrl = 'https://media.mw.metropolia.fi/wbma';
   picArray: Pic[];
 
+  loggedIn = false;
   constructor(public http: HttpClient) {
     
   }
@@ -21,5 +22,13 @@ export class MediaProvider {
   }
   getSingleMedia(id){
     return this.http.get<Pic>(this.configUrl + '/media/'+ id);
+  }
+  login(user: User){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-type':'application/json'
+      })
+    }; //TODO: add headers
+    return this.http.post<LoginResponse>(this.configUrl+ "/login", user,httpOptions)
   }
 }

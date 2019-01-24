@@ -14,16 +14,16 @@
 
 
 <ion-content padding>
-  <ion-list>
-    <ion-item>
-        <ion-label color="primary" stacked>Username</ion-label>
-        <ion-input type="password" placeholder="Password Input"></ion-input>
-      </ion-item>
-    
+  <!--TODO: add FORMS for login and registration-->
+  <form (ngSubmit)="login()">
       <ion-item>
-        <ion-label color="primary" floating>Email</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-</ion-list>
-<button ion-button block color="secondary">Login</button>
+          <ion-label color="primary" floating>Username</ion-label>
+          <ion-input type="text" [(ngModel)]="user.username" name="username"></ion-input>
+        </ion-item> 
+        <ion-item>
+          <ion-label color="primary" floating>Password</ion-label>
+          <ion-input type="Password" [(ngModel)]="user.password" name="password"></ion-input>
+        </ion-item>
+        <button ion-button block color="secondary" type="submit">Login</button>
+  </form>
 </ion-content>
