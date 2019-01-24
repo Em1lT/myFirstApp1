@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { MediaProvider } from '../../providers/media/media';
 import { User } from '../../interfaces/pic';
 import { LoginResponse } from '../../interfaces/pic';
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -18,19 +19,35 @@ user: User = {username: null};
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient,
     public mediaprovider: MediaProvider) {
   }
-
+  ngOnInit(){
+    this.checkLogin();
+  }
+  checkLogin(){
+    if(localStorage.getItem('token')){
+        this.navCtrl.push(HomePage);
+    }
+  }
   login(){
     this.mediaprovider.login(this.user).subscribe(
       (response: LoginResponse) => {
         console.log(response);
         localStorage.setItem('token', response.token);
-        console.log("Storage set");
+        this.navCtrl.push(HomePage);
         this.mediaprovider.loggedIn = true;
       },
       error =>{
         console.log(error);
       }
     )
-
+  }
+  register(){
+    this.mediaprovider.register(this.user).subscribe(
+      (response: LoginResponse) => {
+        console.log(response);
+      },
+      error=>{
+        console.log(error);
+      }
+    )
   }
 }

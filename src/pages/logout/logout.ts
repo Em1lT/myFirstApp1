@@ -19,7 +19,10 @@ export class LogoutPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LogoutPage');
+   
   }
-
+  ngOnInit(){
+    localStorage.clear();
+    console.log("Cleared!");
+  }
 }

@@ -13,6 +13,7 @@ export class MediaProvider {
   picArray: Pic[];
 
   loggedIn = false;
+  
   constructor(public http: HttpClient) {
     
   }
@@ -30,5 +31,21 @@ export class MediaProvider {
       })
     }; //TODO: add headers
     return this.http.post<LoginResponse>(this.configUrl+ "/login", user,httpOptions)
+  }
+  register(user:User){
+    if(this.checkIfUserExists(user)){
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-type':'application/json'
+        })
+      };
+      return this.http.post<LoginResponse>(this.configUrl+ "/users", user,httpOptions)
+    }else{
+      console.log("error");
+    }
+  
+  }
+  checkIfUserExists(user:User){
+    return this.http.get(this.configUrl+ "/users/username:"+user.username);
   }
 }
