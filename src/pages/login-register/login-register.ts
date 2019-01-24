@@ -46,6 +46,8 @@ user: User = {username: null};
         console.log(response);
          this.mediaprovider.register(this.user).subscribe(
           (response: LoginResponse) => {
+            localStorage.setItem('token', response.token);
+            this.navCtrl.push(HomePage);
             console.log(response);
           },
           error=>{

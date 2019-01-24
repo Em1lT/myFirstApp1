@@ -29,7 +29,7 @@ export class MediaProvider {
       headers: new HttpHeaders({
         'Content-type':'application/json'
       })
-    }; //TODO: add headers
+    };
     return this.http.post<LoginResponse>(this.configUrl+ "/login", user,httpOptions)
   }
   register(user:User){
@@ -37,7 +37,7 @@ export class MediaProvider {
       headers: new HttpHeaders({
         'Content-type':'application/json'
       })
-    }; //TODO: add headers
+    };
     return this.http.post<LoginResponse>(this.configUrl+ "/users", user,httpOptions)
   }
   checkIfUserExists(user:User){
