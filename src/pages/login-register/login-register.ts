@@ -41,9 +41,17 @@ user: User = {username: null};
     )
   }
   register(){
-    this.mediaprovider.register(this.user).subscribe(
+    this.mediaprovider.checkIfUserExists(this.user).subscribe(
       (response: LoginResponse) => {
         console.log(response);
+         this.mediaprovider.register(this.user).subscribe(
+          (response: LoginResponse) => {
+            console.log(response);
+          },
+          error=>{
+            console.log(error);
+          }
+        )
       },
       error=>{
         console.log(error);
