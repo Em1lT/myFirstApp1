@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { MediaProvider } from '../../providers/media/media';
-import { User } from '../../interfaces/pic';
+import { User, CheckUsername } from '../../interfaces/pic';
 import { LoginResponse } from '../../interfaces/pic';
 import { HomePage } from '../home/home';
 
@@ -27,6 +27,7 @@ user: User = {username: null};
         this.navCtrl.push(HomePage);
     }
   }
+  
   login(){
     this.mediaprovider.login(this.user).subscribe(
       (response: LoginResponse) => {
@@ -42,7 +43,7 @@ user: User = {username: null};
   }
   register(){
     this.mediaprovider.checkIfUserExists(this.user).subscribe(
-      (response: LoginResponse) => {
+      (response: CheckUsername) => {
         console.log(response);
          this.mediaprovider.register(this.user).subscribe(
           (response: LoginResponse) => {

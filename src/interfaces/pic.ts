@@ -32,3 +32,6 @@ export interface Pic {
       token: string,
       user: User;
   }
+  export interface CheckUsername{
+    message: string
+}
