@@ -12,6 +12,7 @@ import { Observable } from 'rxjs/Observable';
 export class HomePage {
 
   pics: any;
+  mediaArray: Observable<Pic[]>;
   picArray: Pic[] = [];
   //picArray2: Observable<Pic[]>;
   url: string = "https://media.mw.metropolia.fi/wbma/uploads/";
@@ -22,7 +23,20 @@ export class HomePage {
     this.getAllFiles();
   }
   getAllFiles(){
-    this.mediaProvider.getAllMedia().subscribe((data: Pic[])=> {
+    this.mediaArray = this.mediaProvider.getAllMedia();
+  }
+
+  
+  clicked(pic){
+    alert("Clicked!!" + pic.file_id + pic.title);
+  }
+}
+
+
+//Used in previous assignments!!!!!!!!
+//Changes made in 28.01.2019
+/*
+.subscribe((data: Pic[])=> {
     console.log('data', data);
    /*A:
     this.picArray = data.map((pic: Pic) => {
@@ -32,7 +46,7 @@ export class HomePage {
       pic.thumbnails = {
         160: nameArray[0]+ '-tn160.png',
       }
-    return pic;*/
+    return pic;
     //B:
     data.forEach((pic:Pic) => {
       this.mediaProvider.getSingleMedia(pic.file_id)
@@ -40,11 +54,4 @@ export class HomePage {
         this.picArray.push(file);
       });
     });
-  });
-  }
-
-  
-  clicked(pic){
-    alert("Clicked!!" + pic.file_id + pic.title);
-  }
-}
+  });*/

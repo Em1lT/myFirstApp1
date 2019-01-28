@@ -11,6 +11,7 @@ import { MediaProvider } from '../providers/media/media';
 import { LogoutPage } from '../pages/logout/logout';
 import { LoginRegisterPage } from '../pages/login-register/login-register';
 import { MenuPage } from '../pages/menu/menu';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MenuPage } from '../pages/menu/menu';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -37,7 +39,8 @@ import { MenuPage } from '../pages/menu/menu';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    MediaProvider
+    MediaProvider,
+    PipesModule
   ]
 })
 export class AppModule {}
