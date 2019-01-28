@@ -13,7 +13,10 @@ export class MediaProvider {
   picArray: Pic[];
 
   loggedIn = false;
-  
+  username: string;
+  user_id: number;
+  fullname: string;
+  avatar: String;
   constructor(public http: HttpClient) {
     
   }
@@ -43,4 +46,10 @@ export class MediaProvider {
   checkIfUserExists(user:User){
       return this.http.get(this.configUrl+ "/users/username/"+user.username)
   }
+  user(user:User){
+    this.username = user.username;
+    this.fullname = user.full_name;
+    this.user_id = user.user_id;
+  }
+ 
 }

@@ -1,9 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { MediaProvider } from '../../providers/media/media';
 import { Pic } from '../../interfaces/pic';
-import { promises } from 'fs';
-import { resolve } from 'path';
-import { rejects } from 'assert';
 /**
  * Generated class for the ThumbnailPipe pipe.
  *
@@ -20,7 +17,7 @@ export class ThumbnailPipe implements PipeTransform {
 
   }
 
-  transform(id: string, ...args) {//i++
+async transform(id: string, ...args) {//i++
   //pure version:
     return new Promise((resolve, rejects) => {
     this.mediaProvider.getSingleMedia(id).subscribe((response: Pic) =>{

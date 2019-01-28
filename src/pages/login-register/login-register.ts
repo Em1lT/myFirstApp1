@@ -20,7 +20,7 @@ user: User = {username: null};
     public mediaprovider: MediaProvider) {
   }
   ngOnInit(){
-    this.checkLogin();
+    //this.checkLogin();
   }
   checkLogin(){
     if(localStorage.getItem('token')){
@@ -31,9 +31,10 @@ user: User = {username: null};
   login(){
     this.mediaprovider.login(this.user).subscribe(
       (response: LoginResponse) => {
-        console.log(response);
+        console.log(response.user);
+        this.mediaprovider.user(response.user);
         localStorage.setItem('token', response.token);
-        this.navCtrl.push(HomePage);
+        //this.navCtrl.push(HomePage);
         this.mediaprovider.loggedIn = true;
       },
       error =>{
@@ -44,11 +45,10 @@ user: User = {username: null};
   register(){
     this.mediaprovider.checkIfUserExists(this.user).subscribe(
       (response: CheckUsername) => {
-        console.log(response);
          this.mediaprovider.register(this.user).subscribe(
           (response: LoginResponse) => {
-            localStorage.setItem('token', response.token);
-            this.navCtrl.push(HomePage);
+           localStorage.setItem('token', response.token);
+           // this.navCtrl.push(HomePage);
             console.log(response);
           },
           error=>{

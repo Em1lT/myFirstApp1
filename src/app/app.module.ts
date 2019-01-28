@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MediaProvider } from '../providers/media/media';
-import { LogoutPage } from '../pages/logout/logout';
+import { profilePage } from '../pages/profile/profile';
 import { LoginRegisterPage } from '../pages/login-register/login-register';
 import { MenuPage } from '../pages/menu/menu';
 import { PipesModule } from '../pipes/pipes.module';
@@ -17,7 +17,7 @@ import { PipesModule } from '../pipes/pipes.module';
   declarations: [
     MyApp,
     HomePage,
-    LogoutPage,
+    profilePage,
     LoginRegisterPage,
     MenuPage
   ],
@@ -31,7 +31,7 @@ import { PipesModule } from '../pipes/pipes.module';
   entryComponents: [
     MyApp,
     HomePage,
-    LogoutPage,
+    profilePage,
     LoginRegisterPage,
     MenuPage
   ],

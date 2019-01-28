@@ -7,12 +7,17 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Logout</ion-title>
+    <ion-title>profile</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+<ion-item>
+  <img [src]="url + avatar">
+    <h1>{{mediaProvider.username}}</h1>
+    <h1>{{mediaProvider.user_id}}</h1>
+</ion-item>   
 
 </ion-content>

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { LoginRegisterPage } from '../login-register/login-register';
-import { LogoutPage } from '../logout/logout';
+import { profilePage } from '../../pages/profile/profile';
 import { MediaProvider } from '../../providers/media/media';
 
 
@@ -19,5 +19,5 @@ export class MenuPage {
 }
   homeRoot = HomePage;
   loginRoot = LoginRegisterPage;
-  logoutRoot = LogoutPage;
+  profileRoot = profilePage;
 }
