@@ -15,6 +15,8 @@ import { HomePage } from '../home/home';
 export class LoginRegisterPage {
 
 user: User = {username: null};
+confirmPassword: string;
+showRegis: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient,
     public mediaprovider: MediaProvider) {
@@ -43,22 +45,54 @@ user: User = {username: null};
     )
   }
   register(){
-    this.mediaprovider.checkIfUserExists(this.user).subscribe(
-      (response: CheckUsername) => {
+    if(this.checkPassword()){
+      if(this.mediaprovider.check){
          this.mediaprovider.register(this.user).subscribe(
           (response: LoginResponse) => {
            localStorage.setItem('token', response.token);
            // this.navCtrl.push(HomePage);
             console.log(response);
-          },
-          error=>{
-            console.log(error);
           }
         )
-      },
-      error=>{
-        console.log(error);
+        }else{
+          alert("Username already in use");
+        }
+    }else{
+      alert("password doesn't match");
+    }
+  }
+  checkUser(){
+    this.mediaprovider.checkIfUserExists(this.user.username).subscribe(
+      (response: CheckUsername) =>{
+        if(response.available){
+          console.log("available");
+          this.mediaprovider.check= true;
+        }else{
+          console.log("not available");
+          alert("Username in use");
+          this.mediaprovider.check = false;
+        }
       }
     )
+  }
+  showRegister(){
+    const register = document.getElementById("register");
+    const login = document.getElementById("login");
+    const text = document.getElementById("text");
+    if(register.hidden){
+      register.hidden = false;
+     login.hidden = true;
+    text.innerHTML ="Already have an account?";
+    }else{
+     register.hidden = true;
+     login.hidden = false;
+    }
+  }
+  checkPassword(){
+    if(this.user.password === this.confirmPassword){
+      return true;
+    }else{
+      return false;
+    }
   }
 }

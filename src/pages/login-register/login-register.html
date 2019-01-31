@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <!--TODO: add FORMS for login and registration-->
-  <form (ngSubmit)="login()">
+  <form (ngSubmit)="login()" id="login">
       <ion-item>
           <ion-label color="primary" floating>Username</ion-label>
           <ion-input type="text" [(ngModel)]="user.username" name="username"></ion-input>
@@ -26,19 +26,25 @@
         </ion-item>
         <button ion-button block color="secondary" type="submit">Login</button>
   </form>
-<form (ngSubmit)="register()">
+  <form hidden (ngSubmit)="register()" id="register">
+    <ion-item>
+        <ion-label color="primary" floating>Username</ion-label>
+        <ion-input type="text" [(ngModel)]="user.username" name="username" (ionBlur)="checkUser()" id="name"></ion-input>
+      </ion-item>
       <ion-item>
-          <ion-label color="primary" floating>Username</ion-label>
-          <ion-input type="text" [(ngModel)]="user.username" name="username"></ion-input>
-        </ion-item> 
+          <ion-label color="primary" floating>email</ion-label>
+          <ion-input type="email" name="email"></ion-input>
+        </ion-item>
         <ion-item>
           <ion-label color="primary" floating>Password</ion-label>
           <ion-input type="Password" [(ngModel)]="user.password" name="password"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label color="primary" floating>email</ion-label>
-            <ion-input type="email" name="email"></ion-input>
-          </ion-item>
-        <button ion-button block color="secondary" type="submit">Login</button>
-  </form>
+          <ion-label color="primary" floating>Confirm Password</ion-label>
+          <ion-input type="Password" name="cpassword" [(ngModel)]="confirmPassword"></ion-input>
+        </ion-item>
+      <button ion-button block color="secondary" type="submit">Login</button>
+</form>
+  <h2 (click)="showRegister()" id="text">Not an account yet</h2>
+
 </ion-content>

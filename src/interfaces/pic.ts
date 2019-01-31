@@ -33,5 +33,6 @@ export interface Pic {
       user: User;
   }
   export interface CheckUsername{
-    message: string
+    username: string,
+    available: boolean;
 }

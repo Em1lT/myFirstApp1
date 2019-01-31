@@ -17,6 +17,7 @@ export class MediaProvider {
   user_id: number;
   fullname: string;
   avatar: String;
+  check: boolean =false;
   constructor(public http: HttpClient) {
     
   }
@@ -43,13 +44,14 @@ export class MediaProvider {
     };
     return this.http.post<LoginResponse>(this.configUrl+ "/users", user,httpOptions)
   }
-  checkIfUserExists(user:User){
-      return this.http.get(this.configUrl+ "/users/username/"+user.username)
+  checkIfUserExists(name){
+      return this.http.get(this.configUrl+ "/users/username/"+name);
   }
   user(user:User){
     this.username = user.username;
     this.fullname = user.full_name;
     this.user_id = user.user_id;
   }
+  
  
 }
