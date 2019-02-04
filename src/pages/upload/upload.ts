@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, Loading } from 'ionic-angular';
 import { MediaProvider } from '../../providers/media/media';
 
 
@@ -22,7 +22,8 @@ export class UploadPage {
   title = '';
   description = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public mediaprovider: MediaProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public mediaprovider: MediaProvider,
+    public loadingCtrl: LoadingController) {
   }
   handleChange($event){
     this.file = $event.target.files[0];
@@ -36,19 +37,27 @@ export class UploadPage {
     reader.readAsDataURL(this.file);
   }
   upload(){
-    console.log("dsadsadsa");
     const fd = new FormData();
     fd.append('title', this.title);
     fd.append('Description', this.description);
     fd.append('file',this.file);
     this.mediaprovider.upload(fd).subscribe(resp =>{
-      console.log(resp);
-      setTimeout(this.backToHome, 2000);
       
+
+     this.Loading();
     });
     
   }
-  backToHome(){
-    this.navCtrl.pop().catch();
+  Loading() {
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+  
+    loading.present();
+  
+    setTimeout(() => {
+      this.navCtrl.pop();
+      loading.dismiss();
+    }, 3000);
   }
 }
