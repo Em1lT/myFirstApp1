@@ -52,6 +52,15 @@ export class MediaProvider {
     this.fullname = user.full_name;
     this.user_id = user.user_id;
   }
+
+  upload(data: any){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'X-acces-token': localStorage.getItem('token'),
+      })
+    };
+    return this.http.post<LoginResponse>(this.configUrl+ "/media", data,httpOptions)
+  }
   
  
 }

@@ -14,9 +14,10 @@ import { HomePage } from '../home/home';
 })
 export class LoginRegisterPage {
 
-user: User = {username: null};
+user: User = {username: ""};
 confirmPassword: string;
 showRegis: boolean;
+fullname: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient,
     public mediaprovider: MediaProvider) {
@@ -51,29 +52,42 @@ showRegis: boolean;
           (response: LoginResponse) => {
            localStorage.setItem('token', response.token);
            // this.navCtrl.push(HomePage);
-            console.log(response);
+           
+           console.log(response);
+          },error =>{
+            console.log("error",error);
           }
         )
         }else{
-          alert("Username already in use");
+          const  holder = document.getElementById("jou");
+          holder.style.color = "red";
+          holder.innerHTML = "Username already in use";
         }
     }else{
-      alert("password doesn't match");
+      const  pwd = document.getElementById("password");
+      const  cPwd = document.getElementById("cPassword");
+      pwd.style.color = "red";
+      pwd.innerHTML = "password doesn't match or is too short";
+      cPwd.style.color = "red";
+      cPwd.innerHTML = "password doesn't match or is too short";
     }
   }
+  
   checkUser(){
+    if(this.user.username.length > 3 && this.user.username !== null){
     this.mediaprovider.checkIfUserExists(this.user.username).subscribe(
       (response: CheckUsername) =>{
         if(response.available){
-          console.log("available");
           this.mediaprovider.check= true;
         }else{
-          console.log("not available");
-          alert("Username in use");
+          console.log("Username already in use");
           this.mediaprovider.check = false;
-        }
+        }   
       }
     )
+    }else{
+      console.log("too short");
+    }
   }
   showRegister(){
     const register = document.getElementById("register");
@@ -89,10 +103,14 @@ showRegis: boolean;
     }
   }
   checkPassword(){
+    if(this.user.password.length > 3){
     if(this.user.password === this.confirmPassword){
       return true;
     }else{
       return false;
     }
+  }else{
+    return false;
   }
+}
 }

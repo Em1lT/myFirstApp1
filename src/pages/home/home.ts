@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http'
 import { Pic } from '../../interfaces/pic';
 import { MediaProvider } from '../../providers/media/media';
 import { Observable } from 'rxjs/Observable';
+import { UploadPage } from '../upload/upload';
 
 @Component({
   selector: 'page-home',
@@ -19,7 +20,7 @@ export class HomePage {
   constructor(public navCtrl: NavController,public http: HttpClient, public mediaProvider: MediaProvider) {
 
   }
-  ngOnInit(){
+  ionViewDidEnter(){
     this.getAllFiles();
   }
   getAllFiles(){
@@ -29,6 +30,9 @@ export class HomePage {
   
   clicked(pic){
     alert("Clicked!!" + pic.file_id + pic.title);
+  }
+  upload(){
+    this.navCtrl.push(UploadPage);
   }
 }
 

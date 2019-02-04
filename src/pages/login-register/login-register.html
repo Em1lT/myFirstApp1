@@ -28,20 +28,24 @@
   </form>
   <form hidden (ngSubmit)="register()" id="register">
     <ion-item>
-        <ion-label color="primary" floating>Username</ion-label>
+        <ion-label id="username" color="primary" floating>Username</ion-label>
         <ion-input type="text" [(ngModel)]="user.username" name="username" (ionBlur)="checkUser()" id="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>Full name</ion-label>
+        <ion-input type="text" [(ngModel)]="fullname" name="username" (ionBlur)="checkUser()" id="name"></ion-input>
       </ion-item>
       <ion-item>
           <ion-label color="primary" floating>email</ion-label>
           <ion-input type="email" name="email"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label color="primary" floating>Password</ion-label>
+          <ion-label color="primary" id="password" floating>Password</ion-label>
           <ion-input type="Password" [(ngModel)]="user.password" name="password"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label color="primary" floating>Confirm Password</ion-label>
-          <ion-input type="Password" name="cpassword" [(ngModel)]="confirmPassword"></ion-input>
+          <ion-label color="primary" id="cPassword" floating>Confirm Password</ion-label>
+          <ion-input type="Password" name="cPassword" [(ngModel)]="confirmPassword"></ion-input>
         </ion-item>
       <button ion-button block color="secondary" type="submit">Login</button>
 </form>

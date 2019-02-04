@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import { LoginRegisterPage } from '../login-register/login-register';
 import { profilePage } from '../../pages/profile/profile';
 import { MediaProvider } from '../../providers/media/media';
+import { UploadPage } from '../upload/upload';
 
 
 
@@ -20,4 +21,5 @@ export class MenuPage {
   homeRoot = HomePage;
   loginRoot = LoginRegisterPage;
   profileRoot = profilePage;
+  uploadRoot = UploadPage;
 }
