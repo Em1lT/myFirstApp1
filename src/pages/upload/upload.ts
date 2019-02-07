@@ -42,6 +42,8 @@ export class UploadPage {
     reader.readAsDataURL(this.file);
   }
   upload(){
+     this.description = "Brightness: "+this.filters.brightness+". Contrast: "+ this.filters.contrast+". Sepia:"+
+    this.filters.sepia+". Saturate: "+ this.filters.saturation;
     const fd = new FormData();
     fd.append('title', this.title);
     fd.append('Description', this.description);
