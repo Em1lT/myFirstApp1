@@ -22,7 +22,7 @@
       <button ion-button block color="secondary" type="submit">upload</button>
 </form>
 <ion-card>
-  <img #preview [src]="blob" [ngStyle]="change()">
+  <img #preview [src]="blob" [ngStyle]="choose()">
   <ion-item>
     <ion-range class="brightness" [(ngModel)]="filters.brightness" min="0" max="200">
       <ion-icon small range-left name="sunny"></ion-icon>
