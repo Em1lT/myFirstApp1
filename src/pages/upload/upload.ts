@@ -21,7 +21,12 @@ export class UploadPage {
   file: File;
   title = '';
   description = '';
-
+  filters = {
+    brightness: 100,
+    contrast: 100,
+    sepia: 0,
+    saturation: 100,
+  }
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaprovider: MediaProvider,
     public loadingCtrl: LoadingController) {
   }
@@ -60,4 +65,11 @@ export class UploadPage {
       loading.dismiss();
     }, 3000);
   }
+  change(){
+    var styles = {
+      filter: `brightness(${this.filters.brightness * 0.01}) contrast(${this.filters.contrast * 0.01})
+      sepia(${this.filters.sepia * 0.01}) saturate(${this.filters.saturation * 0.01})`
+      }
+      return styles;
+    }
 }

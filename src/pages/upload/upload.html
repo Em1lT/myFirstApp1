@@ -28,6 +28,30 @@
       <button ion-button block color="secondary" type="submit">upload</button>
 </form>
 <ion-card>
-  <img #preview [src]="filedata">
+  <img #preview [src]="blob" [ngStyle]="change()">
+  <ion-item>
+    <ion-range class="brightness" [(ngModel)]="filters.brightness" min="0" max="200">
+      <ion-icon small range-left name="sunny"></ion-icon>
+      <ion-icon range-right name="sunny"></ion-icon>
+    </ion-range>
+  </ion-item>
+  <ion-item>
+    <ion-range class="contrast" [(ngModel)]="filters.contrast" min="0" max="200">
+      <ion-icon small range-left name="contrast"></ion-icon>
+      <ion-icon range-right name="contrast"></ion-icon>
+    </ion-range>
+  </ion-item>
+  <ion-item>
+    <ion-range class="saturation" [(ngModel)]="filters.saturation" min="0" max="200">
+      <ion-icon small range-left name="water"></ion-icon>
+      <ion-icon range-right name="water"></ion-icon>
+    </ion-range>
+  </ion-item>
+  <ion-item>
+    <ion-range class="sepia" [(ngModel)]="filters.sepia" min="0" max="200">
+      <ion-icon small range-left name="thermometer"></ion-icon>
+      <ion-icon range-right name="thermometer"></ion-icon>
+    </ion-range>
+  </ion-item>
 </ion-card>
 </ion-content>
