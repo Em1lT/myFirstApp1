@@ -27,9 +27,18 @@
       <button ion-button block color="secondary" type="submit">upload</button>
 </form>
 <ion-card>
-  <img #preview [src]="blob" (ngStyle)="change">
+  <img #preview [src]="blob" [ngStyle]="change()">
   <ion-item>
-    <ion-range min="0" max="200" stop="1" (ionBlur)="change()" [(ngModel)]="filters.brightness"></ion-range>
+    <ion-range min="0" max="200" (ionBlur)="change()" [(ngModel)]="filters.brightness" pin="true"></ion-range>
+  </ion-item>
+  <ion-item>
+    <ion-range min="0" max="200" (ionBlur)="change()" [(ngModel)]="filters.contrast" pin="true"></ion-range>
+  </ion-item>
+  <ion-item>
+    <ion-range min="0" max="200" (ionBlur)="change()" [(ngModel)]="filters.sepia" pin="true"></ion-range>
+  </ion-item>
+  <ion-item>
+    <ion-range min="0" max="200" (ionBlur)="change()" [(ngModel)]="filters.saturation" pin="true"></ion-range>
   </ion-item>
 </ion-card>
 </ion-content>

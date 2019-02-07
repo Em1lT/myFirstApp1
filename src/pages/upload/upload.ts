@@ -17,7 +17,10 @@ export class UploadPage {
   description = '';
   blob: any;
   filters = {
-    brightness: 100
+    brightness: 100,
+    contrast: 100,
+    sepia: 100,
+    saturate: 100,
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaprovider: MediaProvider,
@@ -58,15 +61,14 @@ export class UploadPage {
     }, 2000);
   }
   change(){
-    console.log(this.filters.brightness);
-    return {
-      'brightness': this.filters.brightness
+    var styles = {
+      filter: `brightness(${this.filters.brightness * 0.01})`
       }
+      return styles;
     }
     choose(){
-      this.chooser.getFile("yeah")
+      this.chooser.getFile("image/*")
       .then(file => {
-        console.log(file ? file.name : 'canceled')
         this.blob = new Blob([file.data], {
           type: file.mediaType
           
@@ -75,4 +77,5 @@ export class UploadPage {
       })
       .catch((error: any) => console.error(error));
     }
+    
 }
