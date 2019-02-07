@@ -1,9 +1,4 @@
-<!--
-  Generated template for the UploadPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -19,13 +14,8 @@
       </ion-item> 
       <ion-item>
         <ion-label color="primary" floating>description</ion-label>
-        <ion-input type="textarea" name="description" [(ngModel)]="description"></ion-input>
+        <ion-input type="textarea" name="description"></ion-input>
       </ion-item>
-      <!--Was used in the assignmen File upload
-      <ion-item>
-        <ion-input type="file" (change)="handleChange($event)"></ion-input>
-      </ion-item>
-      -->
       <ion-item>
         <button ion-button type="button" (click)="choose()">Choose file</button>
       </ion-item>

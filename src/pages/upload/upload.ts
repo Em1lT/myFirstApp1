@@ -34,6 +34,8 @@ export class UploadPage {
     reader.readAsDataURL(this.blob);
   }
   upload(){
+    this.description = "Brightness: "+this.filters.brightness+". Contrast: "+ this.filters.contrast+". Sepia:"+
+    this.filters.sepia+". Saturate: "+ this.filters.saturation;
     const fd = new FormData();
     fd.append('title', this.title);
     fd.append('Description', this.description);
@@ -46,17 +48,12 @@ export class UploadPage {
     let loading = this.loadingCtrl.create({
       content: 'Please wait'
     });
-  
     loading.present();
-  
-
     setTimeout(() => {
       this.navCtrl.pop();
       loading.dismiss();
     }, 2000);
   }
-  //This changes the colors in the image review section. It was done at the same time as the other assignment so 
-  //the image chooser is a little different.
   change(){
     var styles = {
       filter: `brightness(${this.filters.brightness * 0.01}) contrast(${this.filters.contrast * 0.01})
@@ -70,15 +67,15 @@ export class UploadPage {
       .then(file => {
         this.blob = new Blob([file.data], {
           type: file.mediaType
-          
         });
         this.showPreview();
       })
       .catch((error: any) => console.error(error));
     }
+}
+
      //not used in the chooser assignment
   /*handleChange($event){
     this.file = $event.target.files[0];
     this.showPreview();
   }*/ 
-}
