@@ -21,6 +21,11 @@
         <ion-label color="primary" floating>description</ion-label>
         <ion-input type="textarea" name="description" [(ngModel)]="description"></ion-input>
       </ion-item>
+      <!--Was used in the assignmen File upload
+      <ion-item>
+        <ion-input type="file" (change)="handleChange($event)"></ion-input>
+      </ion-item>
+      -->
       <ion-item>
         <button ion-button type="button" (click)="choose()">Choose file</button>
       </ion-item>
@@ -29,16 +34,28 @@
 <ion-card>
   <img #preview [src]="blob" [ngStyle]="change()">
   <ion-item>
-    <ion-range min="0" max="200" (ionBlur)="change()" [(ngModel)]="filters.brightness" pin="true"></ion-range>
+    <ion-range class="brightness" [(ngModel)]="filters.brightness" min="0" max="200">
+      <ion-icon small range-left name="sunny"></ion-icon>
+      <ion-icon range-right name="sunny"></ion-icon>
+    </ion-range>
   </ion-item>
   <ion-item>
-    <ion-range min="0" max="200" (ionBlur)="change()" [(ngModel)]="filters.contrast" pin="true"></ion-range>
+    <ion-range class="contrast" [(ngModel)]="filters.contrast" min="0" max="200">
+      <ion-icon small range-left name="contrast"></ion-icon>
+      <ion-icon range-right name="contrast"></ion-icon>
+    </ion-range>
   </ion-item>
   <ion-item>
-    <ion-range min="0" max="200" (ionBlur)="change()" [(ngModel)]="filters.sepia" pin="true"></ion-range>
+    <ion-range class="saturation" [(ngModel)]="filters.saturation" min="0" max="200">
+      <ion-icon small range-left name="water"></ion-icon>
+      <ion-icon range-right name="water"></ion-icon>
+    </ion-range>
   </ion-item>
   <ion-item>
-    <ion-range min="0" max="200" (ionBlur)="change()" [(ngModel)]="filters.saturation" pin="true"></ion-range>
+    <ion-range class="sepia" [(ngModel)]="filters.sepia" min="0" max="200">
+      <ion-icon small range-left name="thermometer"></ion-icon>
+      <ion-icon range-right name="thermometer"></ion-icon>
+    </ion-range>
   </ion-item>
 </ion-card>
 </ion-content>
