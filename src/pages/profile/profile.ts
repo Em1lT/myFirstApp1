@@ -22,4 +22,8 @@ export class profilePage {
         this.avatar = response.filename;
       })
   }
+  logout(){
+    this.mediaProvider.loggedIn = false;
+    localStorage.clear();
+  }
 }

@@ -22,12 +22,14 @@
         <ion-input type="textarea" name="description" [(ngModel)]="description"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="file" (change)="handleChange($event)"></ion-input>
-
+        <button ion-button type="button" (click)="choose()">Choose file</button>
       </ion-item>
       <button ion-button block color="secondary" type="submit">upload</button>
 </form>
 <ion-card>
-  <img #preview [src]="filedata">
+  <img #preview [src]="blob" (ngStyle)="change">
+  <ion-item>
+    <ion-range min="0" max="200" stop="1" (ionBlur)="change()" [(ngModel)]="filters.brightness"></ion-range>
+  </ion-item>
 </ion-card>
 </ion-content>

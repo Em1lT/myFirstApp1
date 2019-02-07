@@ -5,6 +5,7 @@ import { Pic } from '../../interfaces/pic';
 import { MediaProvider } from '../../providers/media/media';
 import { Observable } from 'rxjs/Observable';
 import { UploadPage } from '../upload/upload';
+import { populateNodeData } from 'ionic-angular/umd/components/virtual-scroll/virtual-util';
 
 @Component({
   selector: 'page-home',
@@ -26,8 +27,11 @@ export class HomePage {
   getAllFiles(){
     this.mediaArray = this.mediaProvider.getAllMedia();
   }
-
-  
+  checkUser(){
+    if(localStorage.getItem('token').length > 0){
+      this.mediaProvider.loggedIn = true;
+    }
+  }
   clicked(pic){
     alert("Clicked!!" + pic.file_id + pic.title);
   }

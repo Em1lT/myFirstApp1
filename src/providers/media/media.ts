@@ -56,7 +56,7 @@ export class MediaProvider {
   upload(data: any){
     const httpOptions = {
       headers: new HttpHeaders({
-        'X-access-token': localStorage.getItem('token'),
+        'x-access-token': localStorage.getItem('token'),
       })
     };
     return this.http.post<LoginResponse>(this.configUrl+ "/media", data,httpOptions)
