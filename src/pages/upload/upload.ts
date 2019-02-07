@@ -65,7 +65,7 @@ export class UploadPage {
       loading.dismiss();
     }, 3000);
   }
-  change(){
+  choose(){
     var styles = {
       filter: `brightness(${this.filters.brightness * 0.01}) contrast(${this.filters.contrast * 0.01})
       sepia(${this.filters.sepia * 0.01}) saturate(${this.filters.saturation * 0.01})`
