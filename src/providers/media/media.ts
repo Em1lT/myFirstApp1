@@ -61,6 +61,15 @@ export class MediaProvider {
     };
     return this.http.post<LoginResponse>(this.configUrl+ "/media", data,httpOptions)
   }
-  
- 
+  getUser(id){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token': localStorage.getItem('token'),
+      })
+    };
+    return this.http.get<User[]>(this.configUrl+ "/users/" + id,httpOptions);
+  }
+  getLikes(id){
+    return this.http.get<Response[]>(this.configUrl+ "/favourites/file/" + id);
+  }
 }

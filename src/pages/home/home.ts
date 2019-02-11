@@ -5,7 +5,7 @@ import { Pic } from '../../interfaces/pic';
 import { MediaProvider } from '../../providers/media/media';
 import { Observable } from 'rxjs/Observable';
 import { UploadPage } from '../upload/upload';
-import { populateNodeData } from 'ionic-angular/umd/components/virtual-scroll/virtual-util';
+import { PlayerPage } from '../player/player';
 
 @Component({
   selector: 'page-home',
@@ -33,7 +33,9 @@ export class HomePage {
     }
   }
   clicked(pic){
-    alert("Clicked!!" + pic.file_id + pic.title);
+    this.navCtrl.push(PlayerPage,{
+      picture: pic,
+    });
   }
   upload(){
     this.navCtrl.push(UploadPage);
