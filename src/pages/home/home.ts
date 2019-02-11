@@ -23,6 +23,12 @@ export class HomePage {
   }
   ionViewDidEnter(){
     this.getAllFiles();
+    this.checkLogin();
+  }
+  checkLogin(){
+    if(localStorage.getItem('token')){
+      this.mediaProvider.loggedIn = true;
+    }
   }
   getAllFiles(){
     this.mediaArray = this.mediaProvider.getAllMedia();

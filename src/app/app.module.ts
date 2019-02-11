@@ -14,6 +14,7 @@ import { PipesModule } from '../pipes/pipes.module';
 import { UploadPage } from '../pages/upload/upload';
 import { Chooser } from '@ionic-native/chooser';
 import { PlayerPage } from '../pages/player/player';
+import { MyFilesPage } from '../pages/my-files/my-files';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PlayerPage } from '../pages/player/player';
     LoginRegisterPage,
     MenuPage,
     UploadPage,
-    PlayerPage
+    PlayerPage,
+    MyFilesPage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { PlayerPage } from '../pages/player/player';
     LoginRegisterPage,
     MenuPage,
     UploadPage,
-    PlayerPage
+    PlayerPage,
+    MyFilesPage
   ],
   providers: [
     StatusBar,

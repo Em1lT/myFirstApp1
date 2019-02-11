@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Avatar } from 'ionic-angular';
 import { MediaProvider } from '../../providers/media/media';
 import { Pic } from '../../interfaces/pic';
+import { MyFilesPage } from '../my-files/my-files';
 
 @IonicPage()
 @Component({
@@ -25,5 +26,8 @@ export class profilePage {
   logout(){
     this.mediaProvider.loggedIn = false;
     localStorage.clear();
+  }
+  GoToMyPage(){
+    this.navCtrl.push(MyFilesPage);
   }
 }

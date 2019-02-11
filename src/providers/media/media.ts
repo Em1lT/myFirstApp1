@@ -88,4 +88,12 @@ export class MediaProvider {
       };
     }
   }
+  getUserFiles(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token': localStorage.getItem('token'),
+      })
+    };
+    return this.http.get<Pic[]>(this.configUrl+ "/user",httpOptions);
+  }
 }
