@@ -14,7 +14,14 @@
 
 
 <ion-content padding>
-  <img [src]="url+selectedItem.filename">
+  <img *ngIf="image" [src]="url+selectedItem.filename" [(style)]="style">
+  <video  *ngIf="video" width="320" height="240" controls>
+    <source [src]="url+selectedItem.filename" type="video/mp4">
+  </video>
+  <audio *ngIf="audio"controls>
+    <source [src]="url+selectedItem.filename" type="audio/mpeg">
+    Your browser does not support the audio tag.
+  </audio>
   <button ion-button block (click)="favorite(selectedItem)">Add to favorites</button>
   <ion-list>
       <ion-item><h3>Likes:</h3>{{likes}}</ion-item>

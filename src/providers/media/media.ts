@@ -18,6 +18,7 @@ export class MediaProvider {
   fullname: string;
   avatar: String;
   check: boolean =false;
+  
   constructor(public http: HttpClient) {
     
   }
@@ -71,5 +72,20 @@ export class MediaProvider {
   }
   getLikes(id){
     return this.http.get<Response[]>(this.configUrl+ "/favourites/file/" + id);
+  }
+  filter(value){
+    const pattern = '\\[f\\](.*?)\\[\\/f\\]';
+    const re = new RegExp(pattern);
+    // console.log(re.exec(value));
+    try {
+      return JSON.parse(re.exec(value)[1]);
+    } catch (e) {
+      return {
+        brightness: 100,
+        contrast: 100,
+        warmth: 0,
+        saturation: 100,
+      };
+    }
   }
 }

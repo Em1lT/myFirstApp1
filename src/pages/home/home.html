@@ -11,7 +11,8 @@
   <ion-list>
     <ion-item *ngFor="let pic of mediaArray | async">
       <ion-thumbnail item-start>
-        <img  [src]="url + (pic.file_id | thumbnail: 'medium' | async)">
+        <img  *ngIf="pic.media_type=='image'" [src]="url + (pic.file_id | thumbnail: 'medium' | async)">
+        <img  *ngIf="pic.media_type=='video'" [src]="url + (pic.file_id | thumbnail: 'screenshot' | async)">
       </ion-thumbnail>
       <h2>{{pic.title}}</h2>
       <p>{{pic.time_added | date: ('dd.MM.yyyy')}}</p>

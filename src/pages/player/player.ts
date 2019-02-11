@@ -15,11 +15,16 @@ export class PlayerPage {
   user: User[];
   uploader: string = "";
   likes: number;
+  image: boolean = false;
+  video: boolean = false;
+  audio: boolean = false;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaprovider: MediaProvider) {
     this.selectedItem = navParams.get('picture');
   }
 
   ionViewDidLoad() {
+    this.type();
     this.getUser();
     this.getLikes();
   }
@@ -33,13 +38,22 @@ export class PlayerPage {
     )
   }
   getLikes(){
-    console.log(this.selectedItem.file_id);
     const id = this.selectedItem.file_id;
     this.mediaprovider.getLikes(id).subscribe(
        (response: Response[]) =>{
          this.likes = response.length;
        }
      )
+  }
+  type(){
+    console.log(this.selectedItem.media_type);
+    if(this.selectedItem.media_type == "image"){
+      this.image = true;
+    }else if(this.selectedItem.media_type == "video"){
+     this.video = true;
+    }else if(this.selectedItem.media_type == "audio"){
+      this.audio = true;
+    }
   }
 
 }
