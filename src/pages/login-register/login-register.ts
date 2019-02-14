@@ -64,6 +64,7 @@ fullname: string;
           holder.innerHTML = "Username already in use";
         }
     }else{
+      
       const  pwd = document.getElementById("password");
       const  cPwd = document.getElementById("cPassword");
       pwd.style.color = "red";

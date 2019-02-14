@@ -13,12 +13,10 @@ export class DescriptionPipe implements PipeTransform {
    * Takes a value and makes it lowercase.
    */
   transform(value: string, ...args) {
-    console.log(value);
-    const pattern = '\\[f\\](.*?)\\[\\/f\\]';
+    const pattern = '\\[d\\](.*?)\\[\\/d\\]';
     const re = new RegExp(pattern);
-    // console.log(re.exec(value));
     try {
-
+      console.log(re.exec(value)[1]);
       return JSON.parse(re.exec(value)[1]);
     } catch (e) {
       return value;
