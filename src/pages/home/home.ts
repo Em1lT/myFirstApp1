@@ -48,7 +48,6 @@ export class HomePage {
   }
 }
 
-
 //Used in previous assignments!!!!!!!!
 //Changes made in 28.01.2019
 /*

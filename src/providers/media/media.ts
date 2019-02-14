@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Pic, User, LoginResponse } from '../../interfaces/pic';
+import { Pic, User, LoginResponse, Message } from '../../interfaces/pic';
 /*
   Generated class for the MediaProvider provider.
 
@@ -94,6 +94,24 @@ export class MediaProvider {
         'x-access-token': localStorage.getItem('token'),
       })
     };
-    return this.http.get<Pic[]>(this.configUrl+ "/user",httpOptions);
+    return this.http.get<Pic[]>(this.configUrl+ "/media/user",httpOptions);
   }
+  deleteFile(id: number){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token': localStorage.getItem('token'),
+      })
+    };
+    return this.http.delete<Message>(this.configUrl+ "/media/" + id,httpOptions);
+  }
+  updateData(modifed, id : number){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token': localStorage.getItem('token'),
+        'Content-type':'application/json'
+      })
+    };
+    return this.http.put<Message>(this.configUrl+ "/media/" + id,modifed,httpOptions);
+  }
+
 }

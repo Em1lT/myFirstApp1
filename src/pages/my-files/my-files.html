@@ -16,13 +16,15 @@
 <ion-content padding>
   <ion-list>
     <ion-item *ngFor="let pic of myArray | async">
-      <ion-thumbnail item-start>
-        <img  *ngIf="pic.media_type=='image'" [src]="url + (pic.file_id | thumbnail: 'medium' | async)">
-        <img  *ngIf="pic.media_type=='video'" [src]="url + (pic.file_id | thumbnail: 'screenshot' | async)">
-      </ion-thumbnail>
+        <ion-thumbnail item-start>
+            <img  *ngIf="pic.media_type=='image'" [src]="url + (pic.file_id | thumbnail: 'medium' | async)">
+            <img  *ngIf="pic.media_type=='video'" [src]="url + (pic.file_id | thumbnail: 'screenshot' | async)">
+          </ion-thumbnail>
       <h2>{{pic.title}}</h2>
       <p>{{pic.description}}</p>
       <button ion-button clear item-end (click)="clicked(pic)">View</button>
+      <button ion-button clear item-end (click)="deleteMyPic(pic.file_id)">Delete</button>
+      <button ion-button clear item-end (click)="modify(pic)">Modify</button>
     </ion-item>
-  </ion-list>-->
+  </ion-list>
 </ion-content>

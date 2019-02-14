@@ -10,7 +10,7 @@ import { MediaProvider } from '../../providers/media/media';
 })
 export class PlayerPage {
 
-  selectedItem: Pic[];
+  selectedItem: Pic;
   url = "https://media.mw.metropolia.fi/wbma/uploads/";
   user: User[];
   uploader: string = "";
@@ -29,6 +29,7 @@ export class PlayerPage {
     this.getLikes();
   }
   getUser(){
+
     const id = this.selectedItem.user_id;
    this.mediaprovider.getUser(id).subscribe(
       (response: User[]) =>{

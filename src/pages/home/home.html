@@ -16,7 +16,8 @@
       </ion-thumbnail>
       <h2>{{pic.title}}</h2>
       <p>{{pic.time_added | date: ('dd.MM.yyyy')}}</p>
-      <p>{{pic.description}}</p>
+      <p>{{pic.description | description}}</p>
+      
       <button ion-button clear item-end (click)="clicked(pic)">View</button>
     </ion-item>
   </ion-list>

@@ -15,6 +15,7 @@ import { UploadPage } from '../pages/upload/upload';
 import { Chooser } from '@ionic-native/chooser';
 import { PlayerPage } from '../pages/player/player';
 import { MyFilesPage } from '../pages/my-files/my-files';
+import { ModifyPage } from '../pages/modify/modify';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MyFilesPage } from '../pages/my-files/my-files';
     MenuPage,
     UploadPage,
     PlayerPage,
-    MyFilesPage
+    MyFilesPage,
+    ModifyPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { MyFilesPage } from '../pages/my-files/my-files';
     MenuPage,
     UploadPage,
     PlayerPage,
-    MyFilesPage
+    MyFilesPage,
+    ModifyPage
   ],
   providers: [
     StatusBar,

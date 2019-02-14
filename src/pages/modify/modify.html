@@ -1,0 +1,56 @@
+<!--
+  Generated template for the ModifyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>modify</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <form (ngSubmit)="modify()">
+        <ion-item>
+            <ion-label color="primary" floating>title</ion-label>
+            <ion-input type="text" name="title" [(ngModel)]="item.title"></ion-input>
+          </ion-item> 
+          <ion-item>
+            <ion-label color="primary" floating>description</ion-label>
+            <ion-input type="textarea" name="description" [(ngModel)]="item.description"></ion-input>
+          </ion-item>
+          <button ion-button block color="secondary" type="submit">upload</button>
+    </form>
+    <ion-card>
+        <img #preview [src]="url+item.filename" [ngStyle]="change()">
+        <ion-item>
+          <ion-range class="brightness" [(ngModel)]="filters.brightness" min="0" max="200">
+            <ion-icon small range-left name="sunny"></ion-icon>
+            <ion-icon range-right name="sunny"></ion-icon>
+          </ion-range>
+        </ion-item>
+        <ion-item>
+          <ion-range class="contrast" [(ngModel)]="filters.contrast" min="0" max="200">
+            <ion-icon small range-left name="contrast"></ion-icon>
+            <ion-icon range-right name="contrast"></ion-icon>
+          </ion-range>
+        </ion-item>
+        <ion-item>
+          <ion-range class="saturation" [(ngModel)]="filters.saturation" min="0" max="200">
+            <ion-icon small range-left name="water"></ion-icon>
+            <ion-icon range-right name="water"></ion-icon>
+          </ion-range>
+        </ion-item>
+        <ion-item>
+          <ion-range class="sepia" [(ngModel)]="filters.sepia" min="0" max="200">
+            <ion-icon small range-left name="thermometer"></ion-icon>
+            <ion-icon range-right name="thermometer"></ion-icon>
+          </ion-range>
+        </ion-item>
+      </ion-card>
+
+</ion-content>
